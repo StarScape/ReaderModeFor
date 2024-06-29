@@ -26,15 +26,28 @@ form {
 
 footer {
   align-self: center;
+  align-items: center;
   bottom: 0;
   color: #334155;
+  display: flex;
   font-size: 0.8rem;
   margin-bottom: 20px;
-  position: fixed;
+  margin-top: 20px;
 }
 
 b {
   font-weight: 600;
+}
+
+main {
+  flex: 1;
+}
+
+#content-and-footer {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  min-height: 100vh;
 }
 
 #url-input-container {

@@ -43,13 +43,19 @@ function HomePageLayout({ children }: { children: React.ReactNode }) {
     <BasicLayout
       title="Reader Mode: Static, Shareable Version of the Reader Mode for Any Webpage"
     >
-      <main>
-        {children}
-      </main>
+      <div id='content-and-footer'>
+        <main>
+          {children}
+        </main>
 
-      <footer>
-        Made with ♥ by <a href="https://github.com/StarScape/">JA</a>.
-      </footer>
+        <footer>
+          <span style={{flex: 1, marginRight: "0.25em"}}>Made with ♥ by </span>
+          <a target="_blank" href="https://github.com/StarScape/">
+            <img style={{height: "1.75lh", display: "inline"}} src="ja_logo.svg" />
+          </a>
+          <span>.</span>
+        </footer>
+      </div>
     </BasicLayout>
   );
 }
