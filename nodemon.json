@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "src",
+    "public"
+  ],
+  "ext": "tsx,ts,json",
+  "ignore": [],
+  "exec": "ts-node ./src/app.tsx"
+}

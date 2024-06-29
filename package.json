@@ -1,0 +1,27 @@
+{
+  "name": "reader_mode_for",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "build": "npx tsc",
+    "dev": "nodemon"
+  },
+  "author": "Jack A. Arrington",
+  "license": "",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jsdom": "^21.1.7",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.5.0",
+    "express": "^4.19.2",
+    "jsdom": "^24.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
