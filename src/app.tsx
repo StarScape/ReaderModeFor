@@ -27,8 +27,7 @@ function BasicLayout({ title, children }: BasicLayoutProps) {
     <html>
       <head>
         {title && <title>{title}</title>}
-        <link rel="stylesheet" type="text/css" href="home.css" />
-        <link rel="stylesheet" type="text/css" href="reader.css" />
+        <link rel="stylesheet" type="text/css" href="app.css" />
       </head>
       <body>
         {children}
@@ -51,7 +50,7 @@ function HomePageLayout({ children }: { children: React.ReactNode }) {
         <footer>
           <span style={{flex: 1, marginRight: "0.25em"}}>Made with ♥ by </span>
           <a target="_blank" href="https://github.com/StarScape/">
-            <img style={{height: "1.75lh", display: "inline"}} src="ja_logo.svg" />
+            <img style={{height: "1.75lh", display: "inline"}} src="img/ja_logo.svg" />
           </a>
           <span>.</span>
         </footer>
@@ -111,8 +110,6 @@ export function HomePage() {
           ReaderModeFor may not work perfectly on all webpages.
         </p>
       </section>
-
-      <p>https://www3.nhk.or.jp/news/easy/k10014486551000/k10014486551000.html</p>
     </HomePageLayout>
   );
 }
@@ -142,10 +139,21 @@ async function readerModeFor(url: string) {
 function ReaderLayout(props: { title: string, children?: React.ReactNode }) {
   return (
     <BasicLayout title={`Reader Mode for "${props.title}"`}>
-      <div id="reader-content">
-        <h1>{props.title}</h1>
-        <hr />
-        {props.children}
+      <div id="reader-content-and-controls">
+        <div id="left-gutter" className="gutter">
+          <div id="reader-controls">
+            <button><img src="img/font-solid.svg"/></button>
+            <button><img src="img/sun-solid.svg"/></button>
+            <button><img src="img/link-solid.svg"/></button>
+          </div>
+        </div>
+        <div id="reader-content">
+          <h1>{props.title}</h1>
+          <hr />
+          {props.children}
+        </div>
+        <div id="right-gutter" className="gutter">
+        </div>
       </div>
     </BasicLayout>
   );
@@ -155,7 +163,7 @@ app.get('/reader/', jsxHandler(async (req, res) => {
   const url = req.query['url'] as string;
   const readModeResult = await readerModeFor(url);
 
-  // HTMX swap in error if error, otherwise replace whole body
+  // HTMX swap in error if error, otherwise send reader mode page
   if (readModeResult === false) {
     res.setHeader('HX-Retarget', '#error');
     res.setHeader('HX-Reselect', '#error');
